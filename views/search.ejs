@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Lexend+Deca&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+    <link rel="shortcut icon" href="/assets/icon.jpeg">
+    <link rel="stylesheet" href="/css/dashboard.css">
+    <title>IncubatePro - Search</title>
+  <title>Search Results</title>
+  <style>
+    .card {
+      display: inline-block;
+      width: 30%;
+      margin: 10px;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+    .card h2 {
+      margin: 0;
+    }
+    .card p {
+      margin: 10px 0;
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <div class="navlinks">
+        <a href="/">
+            <h4 class="nav-head">IncubatePro</h4>
+        </a>
+    </div>
+    <div class="navlinks">
+      <a href="/appointments">
+        <div class="nav-item">Appointments</div>
+      </a>
+      <div class="search-container">
+        <form action="/search" method="get">
+          <input type="text" placeholder="Search..." name="query" />
+          <button type="submit">Search</button>
+        </form>
+      </div>
+      <a href="/logout" id="button">
+        <div class="nav-item">Logout</div>
+      </a>
+    </div>
+  </nav> 
+  <div class="container main">
+    <% if (data.length > 0) { %>
+      <h1>Search Results:</h1>
+      <% data.forEach((result, index) => { %>
+        <div class="card">
+          <h2>Expert <%= index + 1 %></h2>
+          <p><strong>Name:</strong> <%= result.name %></p>
+          <p><strong>Role:</strong> <%= result.typeOfUser==='Therapist'?"Expert":"Entrepreneur" %></p>
+          <p><strong>Domain:</strong><%= result.domain %></p>
+        </div>
+        <% if ((index + 1) % 3 == 0) { %>
+          <br>
+        <% } %>
+      <% }); %>
+    <% } else { %>
+      <h1>No Results Found</h1>
+    <% } %>
+  </div >
+</body>
+</html>

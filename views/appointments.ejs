@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Lexend+Deca&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+    <link rel="shortcut icon" href="/assets/icon.jpg">
+    <link rel="stylesheet" href="/css/dashboard.css">
+    <title>IncubatePro - Appointments</title>
+  <title>appointments</title>
+</head>
+<body>
+    <nav>
+        <div class="navlinks">
+            <a href="/">
+                <h4 class="nav-head">IncubatePro</h4>
+            </a>
+        </div>
+        <div class="navlinks">
+          <a href="/appointments">
+            <div class="nav-item">Appointments</div>
+          </a>
+          <div class="search-container">
+            <form action="/search" method="get">
+              <input type="text" placeholder="Search..." name="query" />
+              <button type="submit">Search</button>
+            </form>
+          </div>
+          <a href="/logout" id="button">
+            <div class="nav-item">Logout</div>
+          </a>
+        </div>
+      </nav>
+      <!-- <div class="container main">
+        <h1>Appointments Available</h1>
+        <ul>
+            <% appointments.forEach((appointment)=> { %>
+                <li>
+                    <strong>
+                        <%= appointment.ownerName %>
+                    </strong> with <%= appointment.appointmentDate %> on <%= appointment.appointmentTime %>
+                </li>
+                <% }); %>
+        </ul>
+      </div> -->
+      <div class="container main">
+        <h1>Appointments Available</h1>
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th>S. No.</th>
+              <th>Appointment ID</th>
+              <th>Expert Name</th>
+              <th>Appointment Date</th>
+              <th>Appointment Time</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% appointments.forEach((appointment, index) => { %>
+              <tr>
+                <td><%= index + 1 %></td>
+                <td><%= appointment.appointmentCode %></td>
+                <td><%= appointment.ownerName %></td>
+                <td><%= appointment.appointmentDate %></td>
+                <td><%= appointment.appointmentTime %></td>
+              </tr>
+            <% }); %>
+          </tbody>
+        </table>
+      </div>         
+</body>
+</html>
